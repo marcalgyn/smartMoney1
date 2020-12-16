@@ -4,9 +4,11 @@ import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
 import BalanceLabel from '../../components/BalanceLabel';
 
 const NewEntry = ({navigation}) => {
+    const currentBalance=2065.35;
+
     return (
         <View style={styles.container}>
-            <BalanceLabel />
+            <BalanceLabel currentBalance={currentBalance} />
             <View>
                 <TextInput style={styles.input} />
                 <TextInput style={styles.input} />
@@ -14,7 +16,7 @@ const NewEntry = ({navigation}) => {
                 <Button title="Camera" />
             </View>
             <View>
-                <Button title="Salvar"  onPress={() =>
+                <Button title="Salvar" currentBalance={currentBalance} onPress={() =>
                 navigation.navigate('Report') } />
                 
                 <Button title="Cancelar" onPress= {() =>
