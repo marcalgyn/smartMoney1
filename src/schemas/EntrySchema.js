@@ -7,7 +7,7 @@ const EntrySchema = {
         description: 'string?',
         entryAt: 'date',
         latitude: 'float?',
-        longitude: 'floar?',
+        longitude: 'float?',
         address: 'string?',
         photo: 'string?',
         isInit: 'bool',
