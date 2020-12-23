@@ -1,5 +1,5 @@
 {
-  "name": "smartMoney",
+  "name": "smartmoney",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -31,5 +31,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcalgyn/smartMoney.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcalgyn/smartMoney/issues"
+  },
+  "homepage": "https://github.com/marcalgyn/smartMoney#readme",
+  "description": ""
 }
