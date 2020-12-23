@@ -1,7 +1,8 @@
-//const {v1 : uuidv1} = require('uuid');
+
 export const getUUID = () =>{
-    const uuidv1 = require('uuid/V1');
-   
-    return uuidv1();
+  
+   const uuid = require('react-native-uuid');   
+   console.log("Resultado getUUID ",  uuid.v1());
+   return uuid.v1();
 
 };

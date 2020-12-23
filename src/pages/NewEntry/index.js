@@ -18,10 +18,11 @@ const NewEntry = ({navigation}) => {
 
     const onSave = () => {
         const data= {
-            amount : parseFloat(amount)
+            amount : parseFloat(amount),
         };
-        console.log("NewEntry :: onSave ", data);
-        saveEntry(data);
+
+        console.log("NewEntry :: onSave ", data, " - ", entry);
+        saveEntry(data, entry);
         onClose();
     };
 

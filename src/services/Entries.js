@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 import { getRealm } from './Realm';
 
-import { getUUID } from './UUID';
+import { getUUID } from '../services/UUID';
 
 export const getEntries = async () => {
     const realm = await getRealm();
@@ -16,7 +16,8 @@ export const getEntries = async () => {
 export const saveEntry = async (value, entry = {}) => {
     const realm = await getRealm();
     let data = {};
-    const { amount } = value;
+    //let { amount } = value;
+    console.log("getUUID gerado", getUUID());
 
     try {
         realm.write(() => {
@@ -27,12 +28,12 @@ export const saveEntry = async (value, entry = {}) => {
                 isInit: false,
             };
 
-            realm.create('Entry', data, true)
+            realm.create('Entry', data, true);
         });
-        console.log(data);
+        console.log("saveEntry :: Salvar ", data);
 
     } catch (error) {
-        console.error('saveEntry :: data: ' + JSON.stringify(this.data));
+        console.error('saveEntry :: data: ' + JSON.stringify(data));
         Alert.alert("Erro ao salvar os dados de lançamento")
     }
 

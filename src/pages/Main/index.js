@@ -21,8 +21,6 @@ const Main = ({ navigation }) => {
   ];
 
 
-
-
   return (
     <View style={styles.container}>
       <BalancePanel currentBalance={currentBalance} />
@@ -31,7 +29,7 @@ const Main = ({ navigation }) => {
          currentBalance={currentBalance} />
          
       <EntrySummary entriesGrouped={entriesGrouped} />
-      <EntryList />
+      <EntryList navigation={navigation}/>
     </View>
   );
 };

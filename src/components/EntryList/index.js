@@ -15,7 +15,7 @@ const EntryList = ({ navigation }) => {
     }
     loadEntries();
 
-    console.log('EntryList :: useEffect');
+    console.log('EntryList :: useEffect' );
   }, []);
 
   return (
