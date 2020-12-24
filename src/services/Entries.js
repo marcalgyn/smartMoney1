@@ -49,4 +49,5 @@ export const deleteEntry = async entry => {
         console.error('deleteEntry :: error on delete object: ' + JSON.stringify(entry));
         Alert.alert("Erro ao excluir este lançamento")
     }
+
 };

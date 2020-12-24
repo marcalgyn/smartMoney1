@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from '../../../styles/Colors';
+// 'react-native/Libraries/NewAppScreen';
 
 
 const BalancePanelLabel = ({currentBalance}) => {
@@ -17,11 +19,15 @@ const styles = StyleSheet.create({
      alignItems: 'center', 
  },
  label: {
-    fontSize: 18,
+    color: Colors.white,
+    fontSize: 14,
+    
     
  },
  value: {  
-     fontSize: 22,
+    color: Colors.white,
+     fontSize: 36,
+     
  },
 });
 
