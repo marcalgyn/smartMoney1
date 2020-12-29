@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 
+import NewEntryInput from '../NewEntry/NewEntryInput'
+import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
+
 import BalanceLabel from '../../components/BalanceLabel';
 import { saveEntry } from '../../services/Entries';
 import { deleteEntry } from '../../services/Entries'
+import Colors from '../../styles/Colors';
 
 const NewEntry = ({ navigation }) => {
-    const currentBalance = 2065.35;
+    
 
     const entry = navigation.getParam('entry', {
         id: null,
@@ -14,7 +18,7 @@ const NewEntry = ({ navigation }) => {
         entryAt: new Date(),
     });
 
-    const [amount, setAmount] = useState(`${entry.amount}`);
+    const [amount, setAmount] = useState(entry.amount);
 
     const isValid = () => {
         if (parseFloat(amount) !== 0) {
@@ -43,17 +47,20 @@ const NewEntry = ({ navigation }) => {
         navigation.goBack();
     };
 
-
+        //currentBalance={currentBalance}
+        //<TextInput style={styles.input}
+          //          onChangeText={text => setAmount(text)}
+            //        value={amount}
+              //  />
     return (
         <View style={styles.container}>
-            <BalanceLabel currentBalance={currentBalance} />
+            <BalanceLabel  />
 
             <View>
-                <TextInput style={styles.input}
-                    onChangeText={text => setAmount(text)}
-                    value={amount}
-                />
-                <TextInput style={styles.input} />
+                <NewEntryInput value={amount} onChangeValue={setAmount} />
+                <NewEntryCategoryPicker />
+
+                
                 <Button title="GPS" />
                 <Button title="Camera" />
             </View>
@@ -71,9 +78,8 @@ const NewEntry = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
-        
-
+        flex: 1,
+        backgroundColor: Colors.background,
         padding: 10,
     },
     input: {
