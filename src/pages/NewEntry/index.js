@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 
 import NewEntryInput from '../NewEntry/NewEntryInput'
+
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
+
+import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
+import NewEntryDeleteAction from '../NewEntry/NewEntryDeleteAction';
+
+import ActionFooter, { ActionPrimaryButton, ActionSecondaryButton } from '../../components/Core/ActionFooter';
+
 
 import BalanceLabel from '../../components/BalanceLabel';
 import { saveEntry } from '../../services/Entries';
@@ -10,15 +17,19 @@ import { deleteEntry } from '../../services/Entries'
 import Colors from '../../styles/Colors';
 
 const NewEntry = ({ navigation }) => {
-    
-
     const entry = navigation.getParam('entry', {
         id: null,
         amount: 0,
         entryAt: new Date(),
+        category: { id: null, name: 'Selecione' },
+
     });
 
+
+    const [debit, setDebit] = useState(entry.amount <= 0);
     const [amount, setAmount] = useState(entry.amount);
+    const [category, setCategory] = useState(entry.category);
+    const [entryAt, setEntryAt] = useState(entry.entryAt);
 
     const isValid = () => {
         if (parseFloat(amount) !== 0) {
@@ -31,6 +42,9 @@ const NewEntry = ({ navigation }) => {
     const onSave = () => {
         const data = {
             amount: parseFloat(amount),
+            category: category,
+            entryAt: entryAt,
+
         };
 
         console.log("NewEntry :: onSave ", data, " - ", entry);
@@ -46,35 +60,47 @@ const NewEntry = ({ navigation }) => {
     const onClose = () => {
         navigation.goBack();
     };
-
-        //currentBalance={currentBalance}
-        //<TextInput style={styles.input}
-          //          onChangeText={text => setAmount(text)}
-            //        value={amount}
-              //  />
     return (
         <View style={styles.container}>
-            <BalanceLabel  />
+            <BalanceLabel />
 
-            <View>
-                <NewEntryInput value={amount} onChangeValue={setAmount} />
-                <NewEntryCategoryPicker />
+            <View style={styles.formContainer}>
+                <NewEntryInput value={amount}
+                    onChangeDebit={setDebit}
+                    onChangeValue={setAmount} />
+                <NewEntryCategoryPicker
+                    debit={debit}
+                    category={category}
+                    onChangeCategory={setCategory} />
 
-                
-                <Button title="GPS" />
-                <Button title="Camera" />
+                <View style={styles.formActionContainer}>
+
+                    <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+                    <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
+
+                </View>
+
             </View>
+            <Button title="GPS" />
+            <Button title="Camera" />
+     
 
-            <View>
-                <Button title="Adicionar" onPress={() => {
+            <ActionFooter>
+                <ActionPrimaryButton
+                 title={entry.id ? 'Salvar' : 'Adicionar' }
+                 onPress={() => {
                     isValid() && onSave()
                 }} />
-                <Button title="Excluir" onPress={onDelete} />
-                <Button title="Cancelar" onPress={onClose} />
-            </View>
+
+                <ActionSecondaryButton title="Cancelar" onPress={onClose} />
+            </ActionFooter>
+
         </View>
     )
 }
+
+// <Button title="Excluir" onPress={onDelete} />
+
 
 const styles = StyleSheet.create({
     container: {
@@ -82,10 +108,18 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.background,
         padding: 10,
     },
-    input: {
-        borderColor: '#000',
-        borderWidth: 1,
-    }
+
+    formActionContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 10,
+
+    },
+    formContainer: {
+        flex: 1,
+        paddingVertical: 20,
+
+    },
 });
 
 export default NewEntry;

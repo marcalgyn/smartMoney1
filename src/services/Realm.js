@@ -6,12 +6,12 @@ import { getAllCategories, getDefaultCategories } from './Categories';
 export const getRealm = async () => {
     const realm = await Realm.open({
         schema: [CategorySchema, EntrySchema],
-        schemaVersion: 1.1,
+        schemaVersion: 5,
 
     });
-   
-    // teste apagar tudo no banco 
-    drobDB(realm);
+
+    // Teste apagar tudo no banco
+    // DropDB(realm);
     initDB(realm);
     return realm;
 };
@@ -31,26 +31,26 @@ export const initDB = (realm) => {
 
         console.log(`initDB :: initing db....`);
 
-
-
         try {
             realm.write(() => {
                 categories.forEach(category => {
-                    console.log(`initDB :: creating category: ${JSON.stingfy(category)}`);
+                    console.log(`initDB :: creating category: ${JSON.stringify(category)}`);
                     realm.create('Category', category, true);
                 });
             })
         } catch (error) {
-
+            console.log('init DB :: Erro de criação de Category ', error);
         }
 
     } else {
         console.log('init DB :: ja possui categorias ');
     }
 };
+
 export const dropDB = realm => {
-    console.log("dropDB :: apaga todos os dados do DB...");
-    realm.write(() =>{
+
+    realm.write(() => {
         realm.deleteAll();
+        console.log("dropDB :: apaga todos os dados do DB...");
     })
 }

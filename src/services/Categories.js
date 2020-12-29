@@ -1,6 +1,8 @@
 import {getUUID} from './UUID';
 import {getRealm} from './Realm';
 
+
+
 export const getDefaultCategories = () =>{
     return [
         {

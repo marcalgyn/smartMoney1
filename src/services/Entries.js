@@ -3,9 +3,27 @@ import { getRealm } from './Realm';
 
 import { getUUID } from '../services/UUID';
 
-export const getEntries = async () => {
-    const realm = await getRealm();
-    const entries = realm.objects('Entry');
+import moment from '../vendors/moment';
+
+
+export const getEntries = async days => {
+
+
+
+    let realm = await getRealm();
+
+    realm = realm.objects('Entry');
+
+    if (days > 0) {
+        const date = moment()
+            .subtract(days, 'days')
+            .toDate();
+
+        realm = realm.filtered('entryAt >= $0', date)
+
+    }
+
+    const entries = realm.sorted('entryAt', true);
 
     console.log("getEntries :: entries ", JSON.stringify(entries));
 
@@ -25,12 +43,14 @@ export const saveEntry = async (value, entry = {}) => {
                 id: value.id || entry.id || getUUID(),
                 amount: value.amount || entry.amount,
                 entryAt: value.entryAt || entry.entryAt,
+                description: value.category.name,
                 isInit: false,
+                category: value.category || entry.category,
             };
 
             realm.create('Entry', data, true);
         });
-        console.log("saveEntry :: Salvar ", data);
+        console.log("saveEntry :: Salvar ", JSON.stringify(data));
 
     } catch (error) {
         console.error('saveEntry :: data: ' + JSON.stringify(data));
