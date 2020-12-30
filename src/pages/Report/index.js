@@ -11,27 +11,40 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import ActionFooter, { ActionPrimaryButton } from '../../components/Core/ActionFooter';
 import RelativeDaysModal from '../../components/RelativeDaysModal';
+import CategoryModal from '../../components/CategoryModal';
 
 
 const Report = ({ navigation }) => {
     const [relativeDaysModalVisible, setRelativeDaysModalVisible] = useState(false,);
+    const [CategoryModalVisible, setCategoryModalVisible] = useState(false,);
 
     const [relativeDays, setRelativeDays] = useState(7);
+    const [category, setCategory] = useState({
+        id: null, name: 'Todas Categorias',
+    });
 
     const onRelativeDaysPress = item => {
         setRelativeDays(item);
         onRelativeDaysClosePress();
     };
 
+    const onCategoryPress = item =>{
+        setCategory(item);
+        onCategoryClosePress();
+    }
+
     const onRelativeDaysClosePress = () => {
         setRelativeDaysModalVisible(false);
 
+    }
+    const onCategoryClosePress = () =>{
+        setCategoryModalVisible(false);
     }
 
     return (
         <View style={styles.container}>
             <BalanceLabel />
-            <View>
+            <View style={styles.FiltersContainer}>
                 <TouchableOpacity
                     style={styles.filterButton}
                     onPress={() => {
@@ -44,15 +57,36 @@ const Report = ({ navigation }) => {
                         color={Colors.champagneDark}
                     />
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.filterButton}
+                    onPress={() => {
+                        setCategoryModalVisible(true)
+                    }}>
+                    <Text style={styles.filterButtonText}> {category.name} </Text>
+                    <Icon
+                        name="keyboard-arrow-down"
+                        size={20}
+                        color={Colors.champagneDark}
+                    />
+                </TouchableOpacity>
+
                 <RelativeDaysModal 
                     isVisible={relativeDaysModalVisible}
                     onConfirm={onRelativeDaysPress}
                     onCancel={onRelativeDaysClosePress} />
+                    
+                    <CategoryModal
+                     categoryType="all"
+                     isVisible={CategoryModalVisible} 
+                     onConfirm={onCategoryPress} 
+                     onCancel={onCategoryClosePress} />
+
             </View>
 
             <ScrollView>
                 <EntrySummary />
-                <EntryList days={relativeDays} />
+                <EntryList days={relativeDays} category={category}  />
             </ScrollView>
 
             <ActionFooter>
@@ -68,6 +102,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.background,
+
+    },
+    FiltersContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 5,
 
     },
     filterButton: {
