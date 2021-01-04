@@ -1,13 +1,10 @@
 import { Alert } from 'react-native';
 import { getRealm } from './Realm';
-
 import { getUUID } from '../services/UUID';
-
 import moment from '../vendors/moment';
 
 
 export const getEntries = async (days, category) => {
-
     let realm = await getRealm();
     realm = realm.objects('Entry');
     //Parametro para filtar por periodo

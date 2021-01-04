@@ -11,7 +11,7 @@ export const getRealm = async () => {
     });
 
     // Teste apagar tudo no banco
-    // DropDB(realm);
+   // dropDB(realm);
     initDB(realm);
     return realm;
 };
@@ -47,7 +47,7 @@ export const initDB = (realm) => {
     }
 };
 
-export const dropDB = realm => {
+export const dropDB = (realm) => {
 
     realm.write(() => {
         realm.deleteAll();

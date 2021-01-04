@@ -28,7 +28,7 @@ const Report = ({ navigation }) => {
         onRelativeDaysClosePress();
     };
 
-    const onCategoryPress = item =>{
+    const onCategoryPress = item => {
         setCategory(item);
         onCategoryClosePress();
     }
@@ -37,7 +37,7 @@ const Report = ({ navigation }) => {
         setRelativeDaysModalVisible(false);
 
     }
-    const onCategoryClosePress = () =>{
+    const onCategoryClosePress = () => {
         setCategoryModalVisible(false);
     }
 
@@ -58,6 +58,11 @@ const Report = ({ navigation }) => {
                     />
                 </TouchableOpacity>
 
+                <RelativeDaysModal
+                    isVisible={relativeDaysModalVisible}
+                    onConfirm={onRelativeDaysPress}
+                    onCancel={onRelativeDaysClosePress} />
+
                 <TouchableOpacity
                     style={styles.filterButton}
                     onPress={() => {
@@ -71,22 +76,18 @@ const Report = ({ navigation }) => {
                     />
                 </TouchableOpacity>
 
-                <RelativeDaysModal 
-                    isVisible={relativeDaysModalVisible}
-                    onConfirm={onRelativeDaysPress}
-                    onCancel={onRelativeDaysClosePress} />
-                    
-                    <CategoryModal
-                     categoryType="all"
-                     isVisible={CategoryModalVisible} 
-                     onConfirm={onCategoryPress} 
-                     onCancel={onCategoryClosePress} />
+
+                <CategoryModal
+                    categoryType="all"
+                    isVisible={CategoryModalVisible}
+                    onConfirm={onCategoryPress}
+                    onCancel={onCategoryClosePress} />
 
             </View>
 
             <ScrollView>
-                <EntrySummary />
-                <EntryList days={relativeDays} category={category}  />
+                <EntrySummary days={relativeDays} />
+                <EntryList days={relativeDays} category={category} />
             </ScrollView>
 
             <ActionFooter>

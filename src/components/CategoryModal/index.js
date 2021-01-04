@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {Modal, FlatList, TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 
 import Colors from '../../styles/Colors';
@@ -6,26 +6,14 @@ import Colors from '../../styles/Colors';
 import ActionFooter,
 { ActionPrimaryButton, ActionSecondaryButton } from '../Core/ActionFooter';
 
-import { getDebitCategories, getCreditCategories, getAllCategories } from '../../services/Categories';
+import useCategories from '../../hooks/useCategories';
+
 
 const CategoryModal = ({categoryType, isVisible, onConfirm, onCancel}) => {
 
-    const [debitCategories, setDebitCategories] = useState([]);
-    const [creditCategories, setCreditCategories] = useState([]);
-    const [allCategories, setAllCategories] = useState([]);
-
-   
-    useEffect(() => {
-        async function loadCategories() {
-            setDebitCategories(await getDebitCategories());
-            setCreditCategories(await getCreditCategories());
-            setAllCategories(await getAllCategories());
-        }
-        loadCategories();
-
-        console.log('NewEntryCategoryPicker :: useEffect');
-    }, []);
-   
+    const [debitCategories, creditCategories, allCategories ] = useCategories();
+       
+    
     return (
         <Modal animationType="slide"
         transparent={false}

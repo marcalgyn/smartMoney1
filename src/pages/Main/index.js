@@ -11,8 +11,6 @@ import Colors from '../../styles/Colors';
 const Main = ({ navigation }) => {
 
 
-
-
   return (
     <View style={styles.container}>
       <BalancePanel onNewEntryPress={() => navigation.navigate('NewEntry')} />
