@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 
 import NewEntryInput from '../NewEntry/NewEntryInput'
 
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
 
 import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
+import NewEntryAddressPicker from './NewEntryAddressPicker';
+
 import NewEntryDeleteAction from '../NewEntry/NewEntryDeleteAction';
 
 import ActionFooter, { ActionPrimaryButton, ActionSecondaryButton } from '../../components/Core/ActionFooter';
@@ -20,6 +22,9 @@ const NewEntry = ({ navigation }) => {
         id: null,
         amount: 0,
         entryAt: new Date(),
+        address: null,
+        latitude: null,
+        longitude: null,
         category: { id: null, name: 'Selecione' },
 
     });
@@ -30,21 +35,25 @@ const NewEntry = ({ navigation }) => {
     const [amount, setAmount] = useState(entry.amount);
     const [category, setCategory] = useState(entry.category);
     const [entryAt, setEntryAt] = useState(entry.entryAt);
+    const [address, setAddress] = useState(entry.address);
+    const [latitude, setLatitude] = useState(entry.latitude);
+    const [longitude, setLongitude] = useState(entry.longitude);
 
     const isValid = () => {
         if (parseFloat(amount) !== 0) {
             return true;
         }
         return false;
-
     }
 
     const onSave = () => {
         const data = {
             amount: parseFloat(amount),
+            address: address,
+            latitude: latitude,
+            longitude: longitude,
             category: category,
             entryAt: entryAt,
-
         };
 
         console.log("NewEntry :: onSave ", data, " - ", entry);
@@ -76,21 +85,27 @@ const NewEntry = ({ navigation }) => {
                 <View style={styles.formActionContainer}>
 
                     <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+                    <NewEntryAddressPicker address={address} onChange={({ latitude, longitude, address }) => {
+                        setLatitude(latitude);
+                        setLongitude(longitude);
+                        setAddress(address);
+
+                    }} />
                     <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
 
                 </View>
 
             </View>
-            <Button title="GPS" />
+
             <Button title="Camera" />
-     
+
 
             <ActionFooter>
                 <ActionPrimaryButton
-                 title={entry.id ? 'Salvar' : 'Adicionar' }
-                 onPress={() => {
-                    isValid() && onSave()
-                }} />
+                    title={entry.id ? 'Salvar' : 'Adicionar'}
+                    onPress={() => {
+                        isValid() && onSave()
+                    }} />
 
                 <ActionSecondaryButton title="Cancelar" onPress={onClose} />
             </ActionFooter>
