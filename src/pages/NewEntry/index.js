@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 
 import NewEntryInput from '../NewEntry/NewEntryInput'
-
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
-
 import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
+import NewEntryCameraPicker from './NewEntryCameraPicker';
 import NewEntryAddressPicker from './NewEntryAddressPicker';
 
 import NewEntryDeleteAction from '../NewEntry/NewEntryDeleteAction';
-
 import ActionFooter, { ActionPrimaryButton, ActionSecondaryButton } from '../../components/Core/ActionFooter';
 import BalanceLabel from '../../components/BalanceLabel';
-
 import useEntries from '../../hooks/useEntries';
-
 import Colors from '../../styles/Colors';
 
 const NewEntry = ({ navigation }) => {
@@ -77,14 +73,15 @@ const NewEntry = ({ navigation }) => {
                 <NewEntryInput value={amount}
                     onChangeDebit={setDebit}
                     onChangeValue={setAmount} />
+
                 <NewEntryCategoryPicker
                     debit={debit}
                     category={category}
                     onChangeCategory={setCategory} />
 
                 <View style={styles.formActionContainer}>
-
                     <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+                    <NewEntryCameraPicker  />
                     <NewEntryAddressPicker address={address} onChange={({ latitude, longitude, address }) => {
                         setLatitude(latitude);
                         setLongitude(longitude);

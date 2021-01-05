@@ -53,8 +53,6 @@ const NewEntryAddressPicker = ({ address, onChange }) => {
             })
     }
 
-
-
     const onButtonPress = () => {
         if (address) {
             
