@@ -19,6 +19,7 @@ const EntryList = ({days = 7, category, onEntryPress, onPressActionButton }) => 
         data={entries}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => (
+          
           <EntryListItem entry={item} 
           isFirstItem={index ===0}
           isLastItem={index === entries.length - 1}

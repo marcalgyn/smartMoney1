@@ -20,6 +20,7 @@ const Colors = {
     metal: '#95a5a6',
     metalDark: '#7f8c8d',
     asphalt: '#34495e',
+    asphaltClean: '#3f5973',
     asphaltDark: '#2c3e50',
     carbon: '#555459',
     carbonDark: '#3b3a3e',

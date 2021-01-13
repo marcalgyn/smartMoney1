@@ -1,11 +1,18 @@
-import React from 'react'
-import { View, alert, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 
+import React from 'react'
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Alert
+  
+} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../../styles/Colors';
-import { color } from 'react-native-reanimated';
+
+//import { color } from 'react-native-reanimated';
 
 
 
