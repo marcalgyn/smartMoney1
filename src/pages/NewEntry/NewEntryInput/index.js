@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
-import { TextInputMask } from 'react-native-masked-text'
+import React, {useState} from 'react';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
 
 
 import Colors from '../../../styles/Colors';
@@ -18,7 +18,7 @@ const NewEntryInput = ({ value, onChangeDebit, onChangeValue }) => {
             onChangeDebit(false);
         } else {
             setDebit(-1);
-            setDebitPrefix('-')
+            setDebitPrefix('-');
             onChangeDebit(true);
         }
         onChangeValue(value * -1);
@@ -30,7 +30,6 @@ const NewEntryInput = ({ value, onChangeDebit, onChangeValue }) => {
             <TouchableOpacity style={styles.debitButton} onPress={onChangeDebitCredit}>
                 <Text style={styles.debitButtonPrefix}>{debitPrefix}</Text>
                 <Text style={styles.debitButtonText}>R$</Text>
-
             </TouchableOpacity>
             <TextInputMask
                 style={styles.input}
@@ -50,8 +49,8 @@ const NewEntryInput = ({ value, onChangeDebit, onChangeValue }) => {
                 }}
             />
         </View>
-    )
-}
+    );
+};
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -61,6 +60,8 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     debitButton: {
+        backgroundColor: Colors.asphaltClean,
+        borderRadius: 15,
         
         flexDirection: 'row',
         paddingVertical: 20,
@@ -84,5 +85,5 @@ const styles = StyleSheet.create({
         paddingRight: 20,
 
     }
-})
-export default NewEntryInput
+});
+export default NewEntryInput;
