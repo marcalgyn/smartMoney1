@@ -165,6 +165,7 @@ export const getInitCategories = async () => {
 
 
 /*
+
 Ração
 Sal Mineral
 Petróleo
