@@ -10,9 +10,9 @@ export const getRealm = async () => {
 
     });
 
-    // Teste apagar tudo no banco
-   dropDB(realm);
-   cleanInitialized()
+    // Função para Limpar Banco de Dados
+   // dropDB(realm);
+   // cleanInitialized()
 
     initDB(realm);
     return realm;
