@@ -7,6 +7,7 @@ import Report from './pages/Report';
 import Loading from './pages/Loading';
 
 const Routes = createAppContainer(
+
   createSwitchNavigator(
     {
       Loading,
@@ -20,6 +21,21 @@ const Routes = createAppContainer(
       backBehavior: 'history',
     },
   ),
+
+
+    createSwitchNavigator(
+        {
+            Welcome,
+            Main,
+            NewEntry,
+            Report,
+        },
+        {
+            initialRouteName: 'Welcome',
+            backBehavior: 'history',
+        },
+    ),
+
 );
 
 export default Routes;

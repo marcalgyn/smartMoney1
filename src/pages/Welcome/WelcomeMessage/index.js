@@ -8,7 +8,14 @@ const WelcomeMessage = () => {
         <View>
             <Text style={styles.title}>Olá!</Text>
             <Text style={styles.message}>
+
                 Para comerçar a utilizar, você precisa informar o saldo inicial atual.
+
+
+                Para comerçar a utilizar, você precisa informar o saldo inicial atual.
+
+                Para comerçar a utilizar você precisa informar o saldo inicial
+
             </Text>
         </View>
     )
@@ -27,9 +34,23 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         marginTop: 10,
+
         marginBottom: 40,
     },
 
+
+
+        marginBottom: 40,
+    },
+
+
+    },
+
+    container: {
+
+    },
+
 })
+
 
 export default WelcomeMessage
