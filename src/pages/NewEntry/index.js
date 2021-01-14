@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 
 import {StatusBar, View, StyleSheet, Text} from 'react-native';
 
+
+
+import {StatusBar, View, StyleSheet, Text} from 'react-native';
+
 import {View, StyleSheet, Text} from 'react-native';
 
 
@@ -76,7 +80,12 @@ const NewEntry = ({navigation}) => {
       <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
       <BalanceLabel />
 
+
+      <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
       <BalanceLabel />
+
+      <BalanceLabel />
+
 
 
       <View style={styles.formContainer}>

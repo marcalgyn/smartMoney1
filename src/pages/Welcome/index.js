@@ -6,6 +6,11 @@ import ActionFooter, {
   ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
 
+
+import Colors from '../../styles/Colors';
+import Logo from '../../assets/logo-white.png';
+import WelcomeMessage from './WelcomeMessage';
+
 import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 
@@ -13,6 +18,7 @@ import { View, Image, StyleSheet } from 'react-native'
 import Colors from '../../styles/Colors';
 import Logo from '../../assets/logo-white.png';
 import WelcomeMessage from './WelcomeMessage';
+
 
 import WelcomeBalanceInput from './WelcomeBalanceInput';
 import {saveEntry} from '../../services/Entries';
@@ -60,6 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
+
 
 
 const Welcome = ({navigation}) => {

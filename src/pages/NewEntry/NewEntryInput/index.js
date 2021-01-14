@@ -1,6 +1,9 @@
 
 import React from 'react';
 
+
+import React from 'react';
+
 import React, {useState} from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
@@ -11,7 +14,20 @@ import Colors from '../../../styles/Colors';
 
 import InputMoney from '../../../components/Core/InputMoney';
 
+import InputMoney from '../../../components/Core/InputMoney';
+
 const NewEntryInput = ({ value, onChangeDebit, onChangeValue }) => {
+
+    return (
+        <InputMoney
+            value={value}
+            onChangeDebit={onChangeDebit}
+            onChangeValue={onChangeValue}
+        />
+
+    );
+};
+
 
     return (
         <InputMoney
@@ -102,5 +118,6 @@ const styles = StyleSheet.create({
 
     }
 });
+
 
 export default NewEntryInput;

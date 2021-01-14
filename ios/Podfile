@@ -16,7 +16,6 @@ target 'smartMoney' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
-
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   target 'smartMoneyTests' do
