@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {StatusBar, View, StyleSheet, Text} from 'react-native';
 
 import NewEntryInput from '../NewEntry/NewEntryInput';
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
@@ -68,8 +68,8 @@ const NewEntry = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
       <BalanceLabel />
-
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}

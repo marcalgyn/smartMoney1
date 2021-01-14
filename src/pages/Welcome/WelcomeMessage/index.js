@@ -2,12 +2,13 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Colors from '../../../styles/Colors';
 
+
 const WelcomeMessage = () => {
     return (
         <View>
             <Text style={styles.title}>Olá!</Text>
             <Text style={styles.message}>
-                Para comerçar a utilizar você precisa informar o saldo inicial
+                Para comerçar a utilizar, você precisa informar o saldo inicial atual.
             </Text>
         </View>
     )
@@ -26,11 +27,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         marginTop: 10,
+        marginBottom: 40,
     },
 
-    container: {
-
-    },
 })
 
 export default WelcomeMessage

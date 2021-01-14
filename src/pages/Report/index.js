@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TouchableOpacity, StyleSheet, ScrollView, Text } from 'react-native'
+import {StatusBar, View, TouchableOpacity, StyleSheet, ScrollView, Text } from 'react-native'
 
 import BalanceLabel from '../../components/BalanceLabel';
 import EntrySummary from '../../components/EntrySummary';
@@ -43,6 +43,7 @@ const Report = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
             <BalanceLabel />
             <View style={styles.FiltersContainer}>
                 <TouchableOpacity
