@@ -162,3 +162,19 @@ export const getInitCategories = async () => {
   .filtered('isInit = true')
   .sorted('order')['0'];
 };
+
+
+/*
+Ração
+Sal Mineral
+Petróleo
+Funcionário
+Mão de Obra
+Semente
+Médicamento
+Veneno
+Transporte
+Maquinario
+Benfeitoria
+Outros
+*/
