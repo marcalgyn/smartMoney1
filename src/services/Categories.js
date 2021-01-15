@@ -163,7 +163,6 @@ export const getInitCategories = async () => {
   .sorted('order')['0'];
 };
 
-
 /*
 
 Ração

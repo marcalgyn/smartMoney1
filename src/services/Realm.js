@@ -12,27 +12,26 @@ export const getRealm = async () => {
 
     // Função para Limpar Banco de Dados
    // dropDB(realm);
-   // cleanInitialized()
+  //  cleanInitialized()
 
     initDB(realm);
     return realm;
 };
 
 export const initDB = (realm) => {
-    //Consultar a quantidade de categorias no BD
-    //se = 0
-    //Preencho as categorias
-    //se não
-    //não faço nada
 
     const categoriesLength = realm.objects('Category').length;
     console.log(`initDB :: Quantidade de categorias no BD: ${categoriesLength}`);
 
+    const entriesLength = realm.objects('Entry').length;
+
+    if (entriesLength === 0 ) {
+        cleanInitialized();
+    }
+
     if (categoriesLength === 0) {
         const categories = getDefaultCategories();
-
         console.log(`initDB :: initing db....`);
-
         try {
             realm.write(() => {
                 categories.forEach(category => {

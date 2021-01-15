@@ -16,9 +16,6 @@ const useEntries = (days = 7, category) => {
     }, [days, category]);
     
 
-
-
-
     return [entries, saveEntry, deleteEntry];
 
 };

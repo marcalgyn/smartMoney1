@@ -1,14 +1,5 @@
 import React, {useState} from 'react';
-
 import {StatusBar, View, StyleSheet, Text} from 'react-native';
-
-
-
-import {StatusBar, View, StyleSheet, Text} from 'react-native';
-
-import {View, StyleSheet, Text} from 'react-native';
-
-
 import NewEntryInput from '../NewEntry/NewEntryInput';
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
 import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
@@ -80,14 +71,6 @@ const NewEntry = ({navigation}) => {
       <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
       <BalanceLabel />
 
-
-      <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
-      <BalanceLabel />
-
-      <BalanceLabel />
-
-
-
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
@@ -116,8 +99,6 @@ const NewEntry = ({navigation}) => {
         </View>
       </View>
 
-      <Text style={styles.rodape} > Em teste by Silvio Marçal </Text>
-
       <ActionFooter>
         <ActionPrimaryButton
           title={entry.id ? 'Salvar' : 'Adicionar'}
@@ -125,14 +106,11 @@ const NewEntry = ({navigation}) => {
             isValid() && onSave();
           }}
         />
-
         <ActionSecondaryButton title="Cancelar" onPress={onClose} />
       </ActionFooter>
     </View>
   );
 };
-
-// <Button title="Excluir" onPress={onDelete} />
 
 const styles = StyleSheet.create({
   container: {

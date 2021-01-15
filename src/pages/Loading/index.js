@@ -21,7 +21,6 @@ const Loading = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
-
             <ActivityIndicator color={Colors.violet} size={60} />
         </View>
     );
