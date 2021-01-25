@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet  } from 'react-native';
-
 import Colors from '../../../styles/Colors';
-
 import CategoryModal from '../../../components/CategoryModal'
-
 
 const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    
-  
 
     const onCategoryPress = item => {
         onChangeCategory(item);
@@ -33,8 +28,6 @@ const NewEntryCategoryPicker = ({ debit, category, onChangeCategory }) => {
             isVisible={modalVisible} 
             onConfirm={onCategoryPress}
             onCancel={onClosePress} />
-
-            
         </View>
     )
 }

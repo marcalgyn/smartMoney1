@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-import {StatusBar, View, StyleSheet, Text} from 'react-native';
-
+import React, { useState } from 'react';
+import { StatusBar, View, StyleSheet, Text } from 'react-native';
 import NewEntryInput from '../NewEntry/NewEntryInput';
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
 import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
@@ -15,23 +14,26 @@ import BalanceLabel from '../../components/BalanceLabel';
 import useEntries from '../../hooks/useEntries';
 import Colors from '../../styles/Colors';
 
-const NewEntry = ({navigation}) => {
-  const entry = navigation.getParam('entry', {
-    id: null,
-    amount: 0,
-    entryAt: new Date(),
-    address: null,
-    latitude: null,
-    longitude: null,
-    category: {id: null, name: 'Selecione'},
-  });
+const NewEntry = ({ route, navigation }) => {
+  const entry = route.params?.entry
+    ? route.params.entry
+    : {
+      id: null,
+      amount: 0,
+      // entryAt: new Date(),
+      address: null,
+      latitude: null,
+      longitude: null,
+      category: { id: null, name: 'Selecione' },
+    };
 
   const [, saveEntry, deleteEntry] = useEntries();
 
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
-  const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [entryAt, setEntryAt] = useState(
+    entry.entryAt ? new Date(entry.entryAt) : new Date());
   const [address, setAddress] = useState(entry.address);
   const [latitude, setLatitude] = useState(entry.latitude);
   const [longitude, setLongitude] = useState(entry.longitude);
@@ -53,8 +55,8 @@ const NewEntry = ({navigation}) => {
       entryAt: entryAt,
     };
 
-    console.log('NewEntry :: onSave ', data, ' - ', entry);
-    saveEntry(data, entry);
+    console.log('NewEntry :: onSave ', data, ' - ');
+    saveEntry(data);
     onClose();
   };
 
@@ -68,8 +70,10 @@ const NewEntry = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
+
       <StatusBar barStyle="light-content" backgroundColor={Colors.violet} />
       <BalanceLabel />
+
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
@@ -88,7 +92,7 @@ const NewEntry = ({navigation}) => {
 
           <NewEntryAddressPicker
             address={address}
-            onChange={({latitude, longitude, address}) => {
+            onChange={({ latitude, longitude, address }) => {
               setLatitude(latitude);
               setLongitude(longitude);
               setAddress(address);
@@ -98,8 +102,6 @@ const NewEntry = ({navigation}) => {
         </View>
       </View>
 
-      <Text style={styles.rodape} > Em teste by Silvio Marçal </Text>
-
       <ActionFooter>
         <ActionPrimaryButton
           title={entry.id ? 'Salvar' : 'Adicionar'}
@@ -107,14 +109,11 @@ const NewEntry = ({navigation}) => {
             isValid() && onSave();
           }}
         />
-
         <ActionSecondaryButton title="Cancelar" onPress={onClose} />
       </ActionFooter>
     </View>
   );
 };
-
-// <Button title="Excluir" onPress={onDelete} />
 
 const styles = StyleSheet.create({
   container: {

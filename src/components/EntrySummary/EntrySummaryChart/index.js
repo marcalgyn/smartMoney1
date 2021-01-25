@@ -17,7 +17,6 @@ const EntrySummaryChart = ({data}) => {
         },
       }));
 
-
     return (
         <View style={styles.container}>
             <PieChart style={styles.chart} data={chartData} />

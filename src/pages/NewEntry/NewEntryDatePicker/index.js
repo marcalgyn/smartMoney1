@@ -6,9 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../../styles/Colors';
 
 
-
 const NewEntryDatePicker = ({ value, onChange }) => {
-
     const [modalVisible, setModalVisible] = useState(false);
 
     const onChangeValue = date => {

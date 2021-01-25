@@ -9,7 +9,7 @@ const NewEntryInput = ({ value, onChangeDebit, onChangeValue }) => {
             onChangeDebit={onChangeDebit}
             onChangeValue={onChangeValue}
         />
-
     );
 };
+
 export default NewEntryInput;

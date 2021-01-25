@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+
 export const isInitialized = async () =>{
     const openingBalance = await AsyncStorage.getItem('openingBalance');
     return openingBalance !== null && openingBalance === 'true';

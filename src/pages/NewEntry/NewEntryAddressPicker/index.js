@@ -1,11 +1,12 @@
 
+
 import React from 'react'
 import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Alert
-  
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    Alert
+
 } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
@@ -14,11 +15,7 @@ import Colors from '../../../styles/Colors';
 
 //import { color } from 'react-native-reanimated';
 
-
-
-
 const NewEntryAddressPicker = ({ address, onChange }) => {
-
     const getLocation = (latitude, longitude) => {
         Geocoder.init('AIzaSyAmFNZNYqUnYb2IzzJhF9fpM4CP2Lh2tC4');
         Geocoder.from({ latitude, longitude })
@@ -62,11 +59,10 @@ const NewEntryAddressPicker = ({ address, onChange }) => {
 
     const onButtonPress = () => {
         if (address) {
-            
             Alert.alert('Localização', address, [{
                 text: 'Apagar',
-                onPress: () => { 
-                    onChange({latitude: null, longitude: null, address: ''});
+                onPress: () => {
+                    onChange({ latitude: null, longitude: null, address: '' });
                 },
                 style: 'cancel',
             },
@@ -85,7 +81,7 @@ const NewEntryAddressPicker = ({ address, onChange }) => {
     }
     return (
         <View>
-            <TouchableOpacity style={[styles.button, address ? styles.buttonActived: '']} onPress={onButtonPress}>
+            <TouchableOpacity style={[styles.button, address ? styles.buttonActived : '']} onPress={onButtonPress}>
                 <Icon name="person-pin" size={30} color={Colors.white} />
             </TouchableOpacity>
 
@@ -104,7 +100,7 @@ const styles = StyleSheet.create({
         height: 59,
         marginHorizontal: 3,
     },
-    buttonActived:{
+    buttonActived: {
         backgroundColor: Colors.blue,
     }
 })

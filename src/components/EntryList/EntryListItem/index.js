@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Svg, { Circle, Rect } from 'react-native-svg';
 import Colors from '../../../styles/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Currency from '../../Core/Currency';
+import moment from '../../../vendors/moment';
 
 //y = distancia do teto 0 = teto / 50 = base
 //height = distancia da base - 0 = base / 50 = topo
@@ -48,7 +50,10 @@ const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
 
                     <View style={styles.details}>
                         <Icon style={styles.entryAtIcon} name="access-time" size={12} />
-                        <Text style={styles.entryAtText} >{entry.entryAt.toString()} </Text>
+                        <Text style={styles.entryAtText} >{
+                           moment(entry.entryAt). calendar()}
+                        </Text>
+
                         {entry.address && (
                             <>
                                 <Icon style={styles.addressIcon} name="person-pin" size={12} />
@@ -60,7 +65,9 @@ const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
                 </View>
 
                 <View style={styles.amount}>
-                    <Text style={styles.amountText}>{entry.amount} </Text>
+                    <Text style={styles.amountText}>
+                        <Currency value={entry.amount} />
+                    </Text>
                 </View>
 
 
@@ -110,7 +117,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: Colors.metal,
     },
-
 
     amount: {
         justifyContent: 'center',

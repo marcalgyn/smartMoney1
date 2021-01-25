@@ -15,6 +15,7 @@ const CategoryModal = ({categoryType, isVisible, onConfirm, onCancel}) => {
        
     
     return (
+        
         <Modal animationType="slide"
         transparent={false}
         visible={isVisible}>

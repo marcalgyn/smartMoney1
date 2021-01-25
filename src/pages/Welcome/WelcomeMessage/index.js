@@ -6,10 +6,10 @@ import Colors from '../../../styles/Colors';
 const WelcomeMessage = () => {
     return (
         <View>
-            <Text style={styles.title}>Olá!</Text>
-            <Text style={styles.message}>
-                Para comerçar a utilizar, você precisa informar o saldo inicial atual.
-            </Text>
+            <Text style={styles.title}>Bem Vindo!</Text>
+                <Text style={styles.message}>
+                    Para começar a utilizar, informe o saldo inicial atual.
+                </Text>
         </View>
     )
 }
@@ -31,5 +31,4 @@ const styles = StyleSheet.create({
     },
 
 })
-
 export default WelcomeMessage
