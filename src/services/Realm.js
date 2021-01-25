@@ -11,8 +11,9 @@ export const getRealm = async () => {
     });
 
     // Função para Limpar Banco de Dados
-   // dropDB(realm);
-  //  cleanInitialized()
+ //   dropDB(realm);
+ //   cleanInitialized()
+
 
     initDB(realm);
     return realm;

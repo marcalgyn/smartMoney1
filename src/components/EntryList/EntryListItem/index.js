@@ -10,7 +10,7 @@ import moment from '../../../vendors/moment';
 //y = distancia do teto 0 = teto / 50 = base
 //height = distancia da base - 0 = base / 50 = topo
 
-const EntryListItem = ({ entry, isFirstItem, isLastItem, onEntryPress }) => {
+const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
     const bulletLineY = isFirstItem ? 25 : 0;
     const bulletLineHeight = isLastItem ? 25 : 50;
     const showBulletLine = !(isFirstItem && isLastItem);

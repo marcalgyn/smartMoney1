@@ -10,7 +10,8 @@ const BalancePanelLabel = ({currentBalance}) => {
         <View style={styles.container}>
             <Text style={styles.label}>Saldo Atual</Text>
             <Text style={styles.value}>
-                <Currency value={currentBalance} /> </Text>
+                <Currency value={currentBalance} /> 
+            </Text>
         </View>
     );
 };

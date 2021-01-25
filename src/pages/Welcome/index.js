@@ -10,13 +10,10 @@ import ActionFooter, {
 import Colors from '../../styles/Colors';
 import Logo from '../../assets/logo-white.png';
 import WelcomeMessage from './WelcomeMessage';
-
-
 import WelcomeBalanceInput from './WelcomeBalanceInput';
 import { saveEntry } from '../../services/Entries';
 import useCategories from '../../hooks/useCategories';
 import { setInitialized } from '../../services/Welcome';
-import { color } from 'react-native-reanimated';
 
 
 const Welcome = ({ navigation }) => {
@@ -53,21 +50,17 @@ const Welcome = ({ navigation }) => {
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}> Clique no "R$" para escolher: </Text>
-        <Text style={styles.footerText}> Despesa - ou Receita + </Text>
+        <Text style={styles.footerText}> Clique em "R$" para escolher: </Text>
+        <Text style={styles.footerText}> Despesa - / Receita + </Text>
         <Text style={styles.byText}> Dev. Silvio Marçal 62 98556-7314 </Text>
       </View>
-      
-      
-      
-      
-
 
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
   showView: {
     flex: 1,
   },
@@ -81,28 +74,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  footer: {
-    height: 70,
-    
-
-  },
 
   footerText: {
-    fontSize: 14,
     color: Colors.white,
+    fontSize: 12,
     textAlign: 'center',
+    marginTop: 0,
+    marginBottom: 0,
   },
-  
-   byText: {
-    flex: 1,
+  byText: {
+    color: Colors.white,
     fontSize: 11,
-    color: Colors.white,
     textAlign: 'center',
-    fontStyle: 'italic',
-    marginTop: 15,
+    marginTop: 0,
+    marginBottom: 0,
     
-  },
-
+  }
 });
 
 export default Welcome;

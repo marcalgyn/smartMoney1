@@ -13,12 +13,9 @@ const Main = ({ navigation }) => {
       <BalancePanel onNewEntryPress={() => navigation.navigate('NewEntry')} />
       <ScrollView>
         <EntrySummary onPressActionButton={() => navigation.navigate('Report')} />
-        <EntryList onEntryPress={entry =>
-          navigation.navigate('NewEntry', {
-            entry: entry,
-          })
-        }
-          onPressActionButton={() => navigation.navigate('Report')}
+        
+        <EntryList 
+
         />
       </ScrollView>
     </View>
@@ -39,5 +36,8 @@ export default Main;
 /*
 Rotina para nomear projeto por completo
 > react-native-rename "No do Projeto" -b br.com.marcal.nomeprojeto_teste
+add icone
+react-native set-icon --path "C:\mobilePiloto\smartMoney\icone_bank.png"
+
 
  */

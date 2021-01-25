@@ -6,6 +6,7 @@ import Colors from '../../../styles/Colors';
 const WelcomeBalanceInput = ({value, onChangeValue}) => {
   return (
     <View>
+      <Text style={styles.label}>Informe o seu Saldo</Text>
       <Text style={styles.label}>Saldo Inicial</Text>
       <InputMoney
         value={value}
